@@ -1,11 +1,11 @@
 // The provided course information.
-const CourseInfo = {
+const courseInfo = {
     id: 451,
     name: "Introduction to JavaScript"
   };
   
   // The provided assignment group.
-  const AssignmentGroup = {
+  const assignmentGroup = {
     id: 12345,
     name: "Fundamentals of JavaScript",
     course_id: 451,
@@ -33,7 +33,7 @@ const CourseInfo = {
   };
   
   // The provided learner submission data.
-  const LearnerSubmissions = [
+  const learnerSubmissions = [
     {
       learner_id: 125,
       assignment_id: 1,
@@ -76,27 +76,73 @@ const CourseInfo = {
     }
   ];
   
+
+
+
   function getLearnerData(course, ag, submissions) {
     // here, we would process this data to achieve the desired result.
-    const result = [
-      {
-        id: 125,
-        avg: 0.985, // (47 + 150) / (50 + 150)
-        1: 0.94, // 47 / 50
-        2: 1.0 // 150 / 150
-      },
-      {
-        id: 132,
-        avg: 0.82, // (39 + 125) / (50 + 150)
-        1: 0.78, // 39 / 50
-        2: 0.833 // late: (140 - 15) / 150
-      }
-    ];
+    // const result = [
+    //   {
+    //     id: 125,
+    //     avg: 0.985, // (47 + 150) / (50 + 150)
+    //     1: 0.94, // 47 / 50
+    //     2: 1.0 // 150 / 150
+    //   },
+    //   {
+    //     id: 132,
+    //     avg: 0.82, // (39 + 125) / (50 + 150)
+    //     1: 0.78, // 39 / 50
+    //     2: 0.833 // late: (140 - 15) / 150
+    //   }
+    // ];
+
+
+    // function findLongerThan(arr, num1) {
+    //     let output = []
+    //    for (let i = 0; i < arr.length; i++) {
+    //      if (arr[i].length > num1){
+    //        output.push(arr[i]);
+    //    }
+    //    }
+    //    return output
+    //    }
+    //    console.log(findLongerThan(['say', 'hello', 'in', 'the', 'morning'], 3))
+     
+    const result = [];
+    if (courseInfo === undefined)
+    {console.log("Something wrong.")}
+
+    else 
+   //return courseInfo;
+//return assignmentGroup;
+//return learnerSubmissions;
+
+
+    // CourseInfo
+
+
+
+
+    // AssignmentGroup
+
+
+    // LearnerSubmissions
+    
   
+
+
+
+
+
+
+
+
+
+    
     return result;
   }
   
-  const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+  const result = getLearnerData(courseInfo, assignmentGroup, learnerSubmissions);
   
   console.log(result);
   
