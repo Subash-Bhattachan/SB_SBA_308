@@ -116,13 +116,13 @@ function getLearnerData(course, ag, submissions) {
         if (dueDate < currentDate) {
           learnerAssignId = submissions[j].assignment_id;
           assignmentId = ag.assignments[j].id;
-          //studentData[j].avg = avg;
+          
           studentData["id"] = submissions[j].learner_id;
           studentData["avg"] = submissionScore / pointsPossible;
           //console.log("good " + avg)
           // console.log(pointsPossible)
           // console.log(submissionScore)
-        }
+        
 
         if (learnerAssignId === assignmentId) {
           if (submittedDate > dueDate) {
@@ -133,17 +133,20 @@ function getLearnerData(course, ag, submissions) {
             console.log(submissionScore / pointsPossible);
             total_score += submissionScore * 0.9;
             total_possible_score += pointsPossible;
-          } else {
+          } 
+          else {
             total_score += submissionScore;
             total_possible_score += pointsPossible;
+            //console.log(pointsPossible)
           }
         }
       }
     }
+    }
   } catch (error) {
     console.log(error);
   }
-  studentData["avg"] = (total_score / total_possible_score).toFixed(2);
+  studentData["avg"] = Number((total_score / total_possible_score).toFixed(2));
   //console.log("error message: There is an error.")
   result.push(studentData);
   return result;
