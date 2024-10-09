@@ -1,0 +1,18 @@
+
+
+Pseudocode - Dont be vague, be clear with what you want to do
+
+- Open an array Result as a container to hold the student data
+- Enter the for loop to make sure the assignment - assignment Id - compare Id if it matches with the course ID
+- After we make sure we are in the correct course ID, we move ahead with the rest of code.
+
+
+- Create a studentData object that holds data in the form of key-value pair.
+- declare what the keys are going to be and then the subsequent values they are going to carry
+- initiate all the values to be zero for average and total score and possible total score.
+- Then enter another second for loop that is going to run through the length of the value of the StudentData object to 
+  calculate the average of the scores based on the assignments that the students have submitted.
+- Calculate the averages depending on when the assignment was submitted, whether it passed the due date or not. 
+
+
+- The data that studentData holds is then pushed to results array for the final print.
