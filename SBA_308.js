@@ -81,11 +81,11 @@ function getLearnerData(course, ag, submissions) {
   const studentData = {}; // object to hold all the details regarding the student
   let total_score = 0;
   let total_possible_score = 0;
-  let avg = 0;
+  
 
   // first running the outer for loop to run through the condition that the course ID is defined everytime one runs the application
   try {
-    if (course.id === undefined) {
+    if (courseInfo.id !== ag.course_id) {
       console.log("Invalid input.");
     } else {
       for (let i = 0; i < submissions.length; i++) {
@@ -105,11 +105,8 @@ function getLearnerData(course, ag, submissions) {
         const submittedDate = new Date(submissions[j].submission.submitted_at);
         const dueDate = new Date(ag.assignments[j].due_at);
         const currentDate = new Date();
-
-        //  console.log(submittedDate);
-        //  console.log(dueDate);
-        //  console.log("6!!")
-
+        
+        
         let pointsPossible = ag.assignments[j].points_possible;
         let submissionScore = submissions[j].submission.score;
 
@@ -118,10 +115,9 @@ function getLearnerData(course, ag, submissions) {
           assignmentId = ag.assignments[j].id;
           
           studentData["id"] = submissions[j].learner_id;
-          studentData["avg"] = submissionScore / pointsPossible;
-          //console.log("good " + avg)
-          // console.log(pointsPossible)
-          // console.log(submissionScore)
+          studentData[j + 1] = submissionScore / pointsPossible;
+          
+        
         
 
         if (learnerAssignId === assignmentId) {
@@ -129,33 +125,47 @@ function getLearnerData(course, ag, submissions) {
             //take off 10% of the score
 
             studentData["id"] = submissions[j].learner_id;
-            studentData["avg"] = (submissionScore / pointsPossible) * 0.9;
-            console.log(submissionScore / pointsPossible);
-            total_score += submissionScore * 0.9;
-            total_possible_score += pointsPossible;
+            studentData[j + 2] = submissionScore / pointsPossible
+            
+            total_score += submissionScore;
+            total_possible_score += pointsPossible * 0.9;
           } 
           else {
+            
             total_score += submissionScore;
             total_possible_score += pointsPossible;
-            //console.log(pointsPossible)
+            
+            
           }
+         
         }
+        
       }
+      
     }
-    }
-  } catch (error) {
+    
+    
+  }
+  
+  } 
+  catch (error) {
     console.log(error);
   }
-  studentData["avg"] = Number((total_score / total_possible_score).toFixed(2));
+  
+  studentData["avg"] = Number((total_score / total_possible_score).toFixed(3));
+
   //console.log("error message: There is an error.")
   result.push(studentData);
   return result;
+  
 }
 
 const result = getLearnerData(courseInfo, assignmentGroup, learnerSubmissions);
 
+
 console.log(result);
 
+// Only one set of data is printing out 
 // All the outputs are not printing yet in my case, through I tried a lot.
 // I feel there is something still be figured out in if and else statement as the
 // rest of the statements are not being tracked according to the date of submissions made.
